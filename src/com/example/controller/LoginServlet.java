@@ -12,7 +12,7 @@ public class LoginServlet {
     private static String usernameRef;
     private static String passwordRef;
 
-    public static synchronized void doPost(String username, String password){
+    public synchronized static void doPost(String username, String password){
         try {
             usernameRef = username;
             if("a".equals(username)){
@@ -20,6 +20,7 @@ public class LoginServlet {
             }
             passwordRef = password;
             System.out.println("username=" + usernameRef + " password=" + passwordRef);
+            // System.out.println("username=" + username + " password=" + password);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
