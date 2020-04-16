@@ -22,10 +22,10 @@ public class CopyOnWriteArrayListTest1 {
 
     private static final int THREAD_POOL_SIZE = 2;
 
-    private static List<Double> list = new CopyOnWriteArrayList();
+    // private static List<Double> list = new CopyOnWriteArrayList();
 
     public static void main(String [] args) throws InterruptedException {
-        // List<Double> list = new ArrayList();
+        List<Double> list = new ArrayList();
 
         Runnable runnable = new Runnable() {
             @Override
@@ -40,5 +40,7 @@ public class CopyOnWriteArrayListTest1 {
         service.execute(runnable);
         service.execute(runnable);
         service.shutdown();
+
+        // 上面的代码会在运行时产生ArrayIndexOutOfBoundsException，试一试将上面代码28行的ArrayList换成CopyOnWriteArrayList再重新运行。
     }
 }
