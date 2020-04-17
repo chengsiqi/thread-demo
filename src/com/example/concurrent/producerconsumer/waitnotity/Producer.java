@@ -8,6 +8,10 @@ import java.util.List;
  * @description
  *
  * 生产者
+ *
+ * wait()是Object类的方法，调用对象的wait()方法导致当前线程放弃对象的锁（线程暂停执行），
+ * 进入对象的等待池（wait pool），只有调用对象的notify()方法（或notifyAll()方法）时
+ * 才能唤醒等待池中的线程进入等锁池（lock pool），如果线程重新获得对象的锁就可以进入就绪状态。
  **/
 public class Producer implements Runnable {
     private List<Task> buffer;
