@@ -39,6 +39,9 @@ public class Test {
         @Override
         public Double call() throws Exception {
             double total = 0;
+
+            // total = 5 / 0;
+
             for (Double d : dataList){
                 total += d;
             }
@@ -65,5 +68,17 @@ public class Test {
         service.shutdown();
 
         // 上面代码中的call方法就是将计算出的10000个0到1之间的随机小数的平均值返回，我们通过一个Future接口的对象得到了这个返回值。
+
+        /*ExecutorService service1 = Executors.newFixedThreadPool(1);
+        while (true){
+            Future<Double> future = service1.submit(new CalcThread());
+            try {
+                System.out.println(future.get());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }*/
     }
 }
